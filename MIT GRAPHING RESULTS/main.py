@@ -4,6 +4,7 @@ def main():
     Single_stage_uniformity_graph()
 
     plt.show()
+    
     return
  
 

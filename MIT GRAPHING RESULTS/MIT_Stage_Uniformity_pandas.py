@@ -9,7 +9,10 @@ def get_stage_uniformity_df():
     file = get_file_name()
     df = pd.read_csv(file, header = 1)
     df['Z'] = -df['Z']
-    # add_diff_columns(df,['X','Z'])
+    # df['Axisdiff'] = df['Axis'].diff()
+    # df['Zdiff'] = df['Z'].diff()
+    ##TODO find how to take diff and sum of multiple columns and replace. See if it is better than ours.
+    add_diff_columns(df,['X','Z'])
 
     return df
 
