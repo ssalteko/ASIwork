@@ -1,7 +1,7 @@
 from MIT_Stage_Uniformity_graphs import *
 
 def main():
-    Single_stage_uniformity_graph()
+    Single_stage_uniformity_velocity_graph()
 
     plt.show()
     
