@@ -16,7 +16,7 @@ def get_ss_xy(df,x,y):
     
     i = 0
     l = len(df[x])
-    # print(l)
+
     while i < l:
         # print(f"x[{i}]*[y{i}] = {df[x][i]*df[y][i]}")
         # print(i)
@@ -26,7 +26,7 @@ def get_ss_xy(df,x,y):
     ss_xy = x_y_sum - (sum(df[x])*sum(df[y])/len(df[x]))
     return ss_xy
 
-def get_b1(ss_xx,ss_xy):
+def get_b1_0(ss_xx,ss_xy):
     '''calculates and retruns b1'''
     b1 = ss_xy/ss_xx
     return b1
@@ -36,6 +36,14 @@ def get_b0(x,y,b1):
     b0 = mean(y)-b1*mean(x)
     return b0
 
+
+def get_b1(df,x,y):
+    '''calculates and retruns b1'''
+    b1_time =  get_ss_xy(df,x,y)/get_ss_xx(df,x)
+
+    return b1_time
+
+# get_ss_xx(df,x)
 # x = [25,28,28,27,23]
 # y = [34,41,45,38,25]
 
