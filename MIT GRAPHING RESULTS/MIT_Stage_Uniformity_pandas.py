@@ -31,12 +31,11 @@ def add_diff_columns(df,columns):
 def add_best_fit_line(df,x,y):
     '''takes data and returns best fit line.'''
     b1_time = get_b1(df,x,y)
+    print(b1_time)
     b0_time = get_b0(df[x],df[y],b1_time)
-    # print(b0_time,'\n\n\n')
-    # [print(b1_time,'\n\n\n')]
 
     df['best_fit_time'] = df['Time']*b1_time + b0_time
-    print(df[0:50])
+    # print(df[0:50])
 
     return df
 

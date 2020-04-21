@@ -39,6 +39,7 @@ def get_b0(x,y,b1):
 
 def get_b1(df,x,y):
     '''calculates and retruns b1'''
+    
     b1_time =  get_ss_xy(df,x,y)/get_ss_xx(df,x)
 
     return b1_time
