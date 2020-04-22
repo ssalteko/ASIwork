@@ -19,6 +19,7 @@ def add_diff_columns(df,columns):
     ''' adds a difference column here with the diff suffix.'''
 
     for column in columns:
+
         df[f'{column}diff'] = df[f'{column}'].diff()
 
     return df
@@ -48,6 +49,7 @@ def add_best_fit_diff_column(df):
     return df
 
 
+
 def get_df_info_dict(directory):
     ''' gets a dict of dfs from a given directory. '''
 
@@ -62,6 +64,7 @@ def get_df_info_dict(directory):
     return  df_info_dict
 
 
+
 def get_df_dict(directory, edge):
     ''' gets a dict of dfs from a given directory. '''
 
@@ -72,12 +75,11 @@ def get_df_dict(directory, edge):
     for data in data_list:
 
         df_dict[data] = get_stage_uniformity_df(f'{directory}/{data}')[edge:-edge].reset_index()
-
         df_dict[data] = add_best_fit_line(df_dict[data],'Time','Z')
-
         df_dict[data] = add_best_fit_diff_column(df_dict[data])
 
     return df_dict
+
 
 
 def  get_column_RMS(df,column):
@@ -86,3 +88,24 @@ def  get_column_RMS(df,column):
     rms = ((df[column]**2).sum())/len(df)
     
     return rms
+
+
+
+def get_speed_rms_df(df_dict,df_info_dict):
+    ''' Returns a df of each treatments speed and rms.'''
+
+    data_list = list(df_dict.keys())
+
+    df = pd.DataFrame()  ##Empty df to concat to.
+
+    for data in data_list:
+        
+        speed = df_info_dict[data]['speed']
+        rms = get_column_RMS(df_dict[data],'best_fit_diff')
+        treatment = pd.DataFrame({data:[speed,rms]})
+        df = pd.concat([df,treatment], axis = 1)
+
+    df = df.rename(index = {0: "speed", 1: "rms"})
+    df = df.T.sort_values(by = ['speed'])
+    
+    return df

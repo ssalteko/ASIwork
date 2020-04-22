@@ -1,7 +1,6 @@
 from numpy import mean
 
 
-
 def get_ss_xx(df,x):
     ''' calculates and returns ss_xx'''
 
