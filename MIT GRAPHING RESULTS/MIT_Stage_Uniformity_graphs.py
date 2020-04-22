@@ -105,4 +105,3 @@ def group_RMS_by_speed():
     plt.ylabel('um')
     plt.xscale('log')
     plt.suptitle('RMS vs Speed')
-    plt.legend()
