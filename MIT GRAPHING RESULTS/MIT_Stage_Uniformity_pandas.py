@@ -104,7 +104,7 @@ def get_speed_rms_df(df_dict,df_info_dict):
         treatment = pd.DataFrame({data:[speed,rms]})
         df = pd.concat([df,treatment], axis = 1)
 
-    df = df.rename(index = {0: "speed", 1: "rms"})
+    df = df.rename(index = {0: 'speed', 1: "rms"})
     df = df.T.sort_values(by = ['speed'])
     
     return df

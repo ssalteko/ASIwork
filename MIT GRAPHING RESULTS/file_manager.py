@@ -18,7 +18,7 @@ def get_directory():
     '''Allows user to select a directory for analysis, retruns directory name as a string''' 
     
     root = tk.Tk()
-    directory = filedialog.askdirectory(initialdir='.')
+    directory = filedialog.askdirectory(initialdir = '.')
     root.withdraw()
 
     return directory
@@ -28,7 +28,7 @@ def get_directory():
 def get_file_info_dict(file):
     '''Return the file Info'''
     
-    with open(file, "r") as file:
+    with open(file, 'r') as file:
         lines = file.readlines()
     
     fileInfo = lines[0]
