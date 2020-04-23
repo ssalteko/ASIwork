@@ -55,39 +55,10 @@ def Single_stage_deviation(file):
 
 
 
-# def group_stage_deviation():
-#     ''' Graphs the deviations from a directory of files.'''
-
-#     # directory = 'C:/GitSteve/ASIwork/MIT GRAPHING RESULTS/sample_data/MS_8000 20_4_2020'
-#     directory = 'C:/Steve/ASI/asi_github/ASIwork/MIT GRAPHING RESULTS/sample_data/MS_8000 20_4_2020'
-    
-#     edge = 15
-
-#     data_list = get_data_list(directory)  ##Get the list of files to be parsed
-
-#     df_info_dict = get_df_info_dict(directory)  ##Get the dictionary of the headers keyed to their file name.
-#     df_dict = get_df_dict(directory, edge)  ## Get the dictionary of the dfs keyed to their file name.
-    
-#     df = pd.DataFrame()  ##Empty df to concat to.
-
-#     for data in data_list:
-        
-#         # print('speed: ',df_info_dict[data]['speed'])
-#         speed = df_info_dict[data]['speed']
-#         # print('rms: ',get_column_RMS(df_dict[data],'best_fit_diff'))
-#         rms = get_column_RMS(df_dict[data],'best_fit_diff')
-#         treatment = pd.DataFrame({data:[rms,speed]})
-#         df = pd.concat([df,treatment], axis = 1)
-
-#     print(df)
-# #### NOT DONE!!!!!!!!!
-        
-#     # print(df)
-
 def group_RMS_by_speed():
     ''' Graphs the deviations from a directory of files.'''
-    # directory = 'C:/GitSteve/ASIwork/MIT GRAPHING RESULTS/sample_data/MS_8000 20_4_2020'
-    directory = 'C:/Steve/ASI/asi_github/ASIwork/MIT GRAPHING RESULTS/sample_data/MS_8000 20_4_2020'
+    directory = 'C:/GitSteve/ASIwork/MIT GRAPHING RESULTS/sample_data/MS_8000 20_4_2020'
+    # directory = 'C:/Steve/ASI/asi_github/ASIwork/MIT GRAPHING RESULTS/sample_data/MS_8000 20_4_2020'
     
     edge = 15
 

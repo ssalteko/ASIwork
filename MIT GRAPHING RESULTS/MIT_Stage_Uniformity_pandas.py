@@ -9,7 +9,7 @@ def get_stage_uniformity_df(file):
     
     df = pd.read_csv(file, header = 1)
 
-    df['Z'] = df['Z']/10 #### Convert to microns.
+    df['Z'] = abs(df['Z']/10) #### Convert to microns and make positive.
 
     return df
 
