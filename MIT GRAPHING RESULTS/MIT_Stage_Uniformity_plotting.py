@@ -40,7 +40,8 @@ def plot_best_fit_deviations(df):
 
 def plot_rms_by_speed(df):
     ''' plot the rms by speed for a parsed df.'''
-    print(df)
+    
     plt.plot(df['speed'],df['rms'], marker = 'o')
     for a,b in zip(df['speed'], df['rms']): 
+        
         plt.text(a, b, str(round(b,2)))

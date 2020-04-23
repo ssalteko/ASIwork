@@ -2,7 +2,7 @@ from MIT_Stage_Uniformity_graphs import *
 
 
 def main():
-    file = get_file_name()
+    # file = get_file_name()
     # directory = get_directory()
 
     # Single_stage_uniformity_velocity_graph(file)
