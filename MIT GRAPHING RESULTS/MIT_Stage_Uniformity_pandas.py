@@ -9,9 +9,13 @@ def get_stage_uniformity_df(file):
     
     df = pd.read_csv(file, header = 1)
 
+    l = len(df)
+    edge =round(0.1*l)
+    
+
     df['Z'] = abs(df['Z']/10) #### Convert to microns and make positive.
 
-    return df
+    return df[edge:-edge]
 
 
 
@@ -64,7 +68,7 @@ def get_df_info_dict(directory):
 
 
 
-def get_df_dict(directory, edge):
+def get_df_dict(directory):
     ''' gets a dict of dfs from a given directory. '''
 
     data_list = get_data_list(directory)
@@ -73,7 +77,8 @@ def get_df_dict(directory, edge):
 
     for data in data_list:
 
-        df_dict[data] = get_stage_uniformity_df(f'{directory}/{data}')[edge:-edge].reset_index()
+       
+        df_dict[data] = get_stage_uniformity_df(f'{directory}/{data}').reset_index()
         df_dict[data] = add_best_fit_line(df_dict[data],'Time','Z')
         df_dict[data] = add_best_fit_diff_column(df_dict[data])
 
@@ -99,10 +104,10 @@ def get_speed_rms_df(df_dict,df_info_dict):
 
     for data in data_list:
         
-        speed = df_info_dict[data]['speed']
-        rms = get_column_RMS(df_dict[data],'best_fit_diff')
-        treatment = pd.DataFrame({data:[speed,rms]})
-        df = pd.concat([df,treatment], axis = 1)
+        speed = df_info_dict[data]['true_speed'] #Speed read from controller.
+        rms = get_column_RMS(df_dict[data],'best_fit_diff') 
+        treatment = pd.DataFrame({data:[speed,rms]}) #A df of the treatment data to concat with dataframe.
+        df = pd.concat([df,treatment], axis = 1) 
 
     df = df.rename(index = {0: 'speed', 1: "rms"})
     df = df.T.sort_values(by = ['speed'])

@@ -42,7 +42,7 @@ def plot_rms_by_speed(df):
     ''' plot the rms by speed for a parsed df.'''
     
     plt.plot(df['speed'],df['rms'], marker = 'o')
-
+    
     for a,b in zip(df['speed'], df['rms']): 
-
+        
         plt.text(a, b, str(round(b,2)))
