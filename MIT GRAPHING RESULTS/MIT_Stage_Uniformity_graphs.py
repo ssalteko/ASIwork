@@ -59,7 +59,7 @@ def group_RMS_by_speed(directory):
     
 
     data_list = get_data_list(directory)  ##Get the list of files to be parsed
-
+    
     df_info_dict = get_df_info_dict(directory)  ##Get the dictionary of the headers keyed to their file name.
     df_dict = get_df_dict(directory)  ## Get the dictionary of the dfs keyed to their file name.
     
@@ -71,4 +71,4 @@ def group_RMS_by_speed(directory):
     plt.xlabel('speed (mm/s)')
     plt.ylabel('um')
     # plt.xscale('log')
-    plt.suptitle('RMS vs Speed')
+    plt.suptitle('4TPI Scan MS 8000 \nRMS vs Speed')

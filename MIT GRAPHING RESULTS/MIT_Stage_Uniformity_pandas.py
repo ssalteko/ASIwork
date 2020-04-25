@@ -10,7 +10,7 @@ def get_stage_uniformity_df(file):
     df = pd.read_csv(file, header = 1)
 
     l = len(df)
-    edge =round(0.1*l)
+    edge =round(0.3*l)
     
 
     df['Z'] = abs(df['Z']/10) #### Convert to microns and make positive.
@@ -61,9 +61,9 @@ def get_df_info_dict(directory):
     df_info_dict = {}
     
     for data in data_list:
-
+        
         df_info_dict[data] = get_file_info_dict(f'{directory}/{data}')
-
+        print(data)
     return  df_info_dict
 
 
